@@ -3,6 +3,7 @@
 **Artistic Character Painter Clock** is a creative and artistic digital clock that replaces traditional hands with a charming artist character who manually paints and erases the time. Instead of static pointers, you witness a delightful 2D artist at work behind the clock face. As time progresses, the artist uses a sponge to wipe away the old time and a brush to paint the new time with vibrant strokes.
 
 **艺术画家闹钟** 是一款创意十足的数字艺术时钟。它摒弃了传统的指针设计，由一个可爱的 2D 艺术家角色在表盘后方手动绘制和擦除时间。随着时间的推移，这位艺术家会先用海绵擦掉旧的时间，然后用画笔画出新的时间，为您带来如丝般顺滑的视觉体验。
+<img width="1678" height="1480" alt="image" src="https://github.com/user-attachments/assets/36d364bf-84c9-4917-b6bc-f6c4d864dde8" />
 
 ## Features (功能特点)
 - **Character Animation (角色动画)**: A charming 2D artist character acts as the clock hands.
