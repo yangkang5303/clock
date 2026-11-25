@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>艺术画家闹钟 - Character Painter Clock</title>
+    <title>不眠室时钟 - Sleepless Cell Clock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="clock-wrapper">
+    <main class="gallery">
+        <div class="clock-frame" id="clockWrapper">
             <canvas id="clockCanvas"></canvas>
-            <div class="clock-overlay"></div>
+            <div class="glass-rim" aria-hidden="true"></div>
+            <div class="clock-pin" aria-hidden="true"></div>
         </div>
-    </div>
+        <div class="controls">
+            <button id="demoBtn" class="pill-btn" type="button" title="预览起身擦除与重绘">
+                预览擦绘
+            </button>
+            <button id="activityBtn" class="pill-btn" type="button" title="切换屋内桌前状态">
+                状态：伏案写字
+            </button>
+        </div>
+    </main>
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,9 +1,8 @@
 :root {
-    --bg-color: #0f172a;
-    --clock-face: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-color: #e2e8f0;
-    --accent-color: #38bdf8;
+    --wall-bg: #08090b;
+    --wrapper-size: min(620px, 88vmin);
+    --dial-size: calc(var(--wrapper-size) * 0.88);
+    --text-muted: rgba(208, 212, 216, 0.58);
 }
 
 * {
@@ -13,26 +12,31 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+    background-color: var(--wall-bg);
+    background-image:
+        radial-gradient(circle at 50% 46%, rgba(168, 152, 126, 0.05) 0%, rgba(16, 18, 21, 0.65) 48%, rgba(6, 7, 9, 0.99) 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
     overflow: hidden;
+    color: var(--text-muted);
+    -webkit-font-smoothing: antialiased;
 }
 
-.container {
-    perspective: 1000px;
+.gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
 }
 
-.clock-wrapper {
+.clock-frame {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: var(--wrapper-size);
+    height: var(--wrapper-size);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,33 +44,80 @@ body {
 
 #clockCanvas {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
 }
 
-.clock-overlay {
+/* Heavy institutional recessed iron/concrete porthole frame */
+.glass-rim {
+    position: absolute;
+    width: var(--dial-size);
+    height: var(--dial-size);
+    border-radius: 50%;
+    pointer-events: none;
+    border: 3px solid rgba(30, 33, 38, 0.95);
+    box-shadow:
+        0 0 0 8px rgba(17, 19, 22, 0.98),
+        0 0 0 9px rgba(255, 255, 255, 0.05),
+        0 38px 90px rgba(0, 0, 0, 0.88),
+        inset 0 4px 22px rgba(0, 0, 0, 0.55),
+        inset 0 -8px 26px rgba(0, 0, 0, 0.45),
+        inset 0 1px 2px rgba(255, 255, 255, 0.14);
+    z-index: 4;
+}
+
+/* Minimalist dark oxidized center rivet */
+.clock-pin {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background: var(--text-color);
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    z-index: 10;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background: #101215;
+    border: 1px solid rgba(210, 214, 212, 0.42);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+    z-index: 6;
+    pointer-events: none;
 }
 
-/* Glassmorphism effect for the dial */
-.clock-wrapper::after {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: var(--clock-face);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    z-index: -1;
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.30;
+    transition: opacity 0.35s ease;
+}
+
+.controls:hover {
+    opacity: 0.95;
+}
+
+.pill-btn {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(220, 224, 228, 0.8);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.pill-btn:hover {
+    background: rgba(232, 206, 165, 0.12);
+    border-color: rgba(232, 206, 165, 0.32);
+    color: #f3efe6;
+    transform: translateY(-1px);
+}
+
+.pill-btn:active {
+    transform: translateY(0);
 }
