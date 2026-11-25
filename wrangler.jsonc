@@ -3,5 +3,11 @@
   "compatibility_date": "2026-11-25",
   "assets": {
     "directory": "."
-  }
+  },
+  "routes": [
+    {
+      "pattern": "clock.yink.site",
+      "custom_domain": true
+    }
+  ]
 }
